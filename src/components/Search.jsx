@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Flight from './Flight';
 
 
 function Search() {
@@ -10,13 +11,16 @@ function Search() {
 
     useEffect( async () => {
         if (search) {
-            console.log(search);
+
+            // <Flight flightNumber={search}/>
+
+
         }
 
     }, [search])
 
     const handleChangeSearch = (event) => {
-        const currentValue = event.target.value.toLowerCase();
+        const currentValue = event.target.value.toUpperCase();
         setSearch(currentValue);
 
     }
@@ -24,7 +28,12 @@ function Search() {
     return (
         <>
         <div id="searchBar">
-            <TextField style={{width: '500px', backgroundColor: "white"}} id="fullWidth" value={search} onChange={handleChangeSearch}/>
+            <TextField style={{width: '500px', backgroundColor: "white"}} id="fullWidth" value={search.toUpperCase()} onChange={handleChangeSearch}/>
+        </div>
+        <div>
+            <>
+            <Flight flightNumber={search}/>
+            </>
         </div>
         </>
     )
